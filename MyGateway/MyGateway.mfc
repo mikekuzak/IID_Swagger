@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://MyGateway/Car" name="MyGateway" targetNamespace="http://MyGateway/MyGateway">
+  <import location="Car.wsdl" namespace="http://MyGateway/Car"/>
+  <interface portType="ns1:Car">
+    <operation name="getSpecification">
+      <requestFlow/>
+    </operation>
+    <operation name="getCarById">
+      <requestFlow>
+        <node displayName="getCarById : Car" name="Car_getCarById_Input" type="Input">
+          <outputTerminal type="ns1:getCarByIdRequestMsg">
+            <wire targetNode="Mapping"/>
+          </outputTerminal>
+        </node>
+        <node displayName="getCarById : Car" name="Car_getCarById_InputResponse" type="InputResponse">
+          <inputTerminal type="ns1:getCarByIdResponseMsg"/>
+        </node>
+        <node name="Mapping" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/Mapping_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/Mapping_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:getCarByIdRequestMsg"/>
+          <outputTerminal type="ns1:getCarByIdResponseMsg">
+            <wire targetNode="Car_getCarById_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow>
+        <node displayName="getCarById : Car" name="Car_getCarById_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="getCarById : Car" name="Car_getCarById_InputResponse" type="InputResponse">
+          <inputTerminal type="ns1:getCarByIdResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+    <operation name="getAllCars">
+      <requestFlow/>
+    </operation>
+  </interface>
+</mediationFlow>

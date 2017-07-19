@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://MyGateway/xslt/Mapping_req_1" version="8.0.4.0" xmlns:map="http://MyGateway/xslt/Mapping_req_1">
+    <input correlationContext="" message="{http://MyGateway/Car}getCarByIdRequestMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <output correlationContext="" message="{http://MyGateway/Car}getCarByIdResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io5" uri="http://www.w3.org/2003/05/soap-envelope"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.ibm.com/websphere/sibx/smo/v6.0.1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://MyGateway/Car"/>
+        <namespace kind="supplement" prefix="io8" uri="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"/>
+        <namespace kind="supplement" prefix="io9" uri="http://www.w3.org/2005/08/addressing"/>
+        <namespace kind="supplement" prefix="io6" uri="http://MyGateway"/>
+        <namespace kind="supplement" prefix="io7" uri="wsdl.http://MyGateway/Car"/>
+        <namespace kind="supplement" prefix="io" uri="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+    </namespaces>
+    <mappingDeclaration name="Mapping_req_1">
+        <input path="body"/>
+        <output path="body"/>
+        <move>
+            <input path="getCarById/input"/>
+            <output path="getCarByIdResponse/output/id"/>
+        </move>
+        <assign value="Mercedes">
+            <output path="getCarByIdResponse/output/name"/>
+        </assign>
+        <assign value="S600">
+            <output path="getCarByIdResponse/output/model"/>
+        </assign>
+        <assign value="2016">
+            <output path="getCarByIdResponse/output/year"/>
+        </assign>
+        <assign value="200000">
+            <output path="getCarByIdResponse/output/price"/>
+        </assign>
+        <assign value="54">
+            <output path="getCarByIdResponse/output/spec/id"/>
+        </assign>
+        <assign value="Black">
+            <output path="getCarByIdResponse/output/spec/color"/>
+        </assign>
+        <assign value="200">
+            <output path="getCarByIdResponse/output/spec/mph"/>
+        </assign>
+        <assign value="450">
+            <output path="getCarByIdResponse/output/spec/ps"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

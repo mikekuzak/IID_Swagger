@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Car" targetNamespace="http://MyGateway/Car" xmlns:bons1="http://MyGateway" xmlns:tns="http://MyGateway/Car" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://MyGateway/Car">
+      <xsd:import namespace="http://MyGateway" schemaLocation="Specs.xsd"/>
+      <xsd:import namespace="http://MyGateway" schemaLocation="Cars.xsd"/>
+      <xsd:import namespace="http://MyGateway" schemaLocation="Car.xsd"/>
+      <xsd:element name="getSpecification">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSpecificationResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output" nillable="true" type="bons1:Specs"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCarById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input" nillable="true" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCarByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output" nillable="true" type="bons1:Car"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllCars">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getAllCarsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output" nillable="true" type="bons1:Cars"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="getSpecificationRequestMsg">
+    <wsdl:part element="tns:getSpecification" name="getSpecificationParameters"/>
+  </wsdl:message>
+    <wsdl:message name="getSpecificationResponseMsg">
+    <wsdl:part element="tns:getSpecificationResponse" name="getSpecificationResult"/>
+  </wsdl:message>
+    <wsdl:message name="getCarByIdRequestMsg">
+    <wsdl:part element="tns:getCarById" name="getCarByIdParameters"/>
+  </wsdl:message>
+    <wsdl:message name="getCarByIdResponseMsg">
+    <wsdl:part element="tns:getCarByIdResponse" name="getCarByIdResult"/>
+  </wsdl:message>
+    <wsdl:message name="getAllCarsRequestMsg">
+    <wsdl:part element="tns:getAllCars" name="getAllCarsParameters"/>
+  </wsdl:message>
+    <wsdl:message name="getAllCarsResponseMsg">
+    <wsdl:part element="tns:getAllCarsResponse" name="getAllCarsResult"/>
+  </wsdl:message>
+    <wsdl:portType name="Car">
+    <wsdl:operation name="getSpecification">
+      <wsdl:input message="tns:getSpecificationRequestMsg" name="getSpecificationRequest"/>
+      <wsdl:output message="tns:getSpecificationResponseMsg" name="getSpecificationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCarById">
+      <wsdl:input message="tns:getCarByIdRequestMsg" name="getCarByIdRequest"/>
+      <wsdl:output message="tns:getCarByIdResponseMsg" name="getCarByIdResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCars">
+      <wsdl:input message="tns:getAllCarsRequestMsg" name="getAllCarsRequest"/>
+      <wsdl:output message="tns:getAllCarsResponseMsg" name="getAllCarsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://MyGateway" xmlns:bons0="http://MyGateway">
+    <xsd:include schemaLocation="Car.xsd"/>
+	<xsd:complexType name="Cars">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" minOccurs="0" name="car" type="bons0:Car">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

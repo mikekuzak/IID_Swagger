@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://MyGateway">
+	<xsd:complexType name="Specs">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="id" type="xsd:int"/>
+			<xsd:element minOccurs="0" name="color" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="mph" type="xsd:int"/>
+			<xsd:element minOccurs="0" name="ps" type="xsd:int"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

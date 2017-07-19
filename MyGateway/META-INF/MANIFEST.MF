@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: MyGatewayLib.jar 
+ Gateway.war
+Created-By: 1.5.0 (IBM Corporation)
+

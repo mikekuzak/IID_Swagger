@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://MyGateway" xmlns:bons0="http://MyGateway">
+    <xsd:include schemaLocation="Specs.xsd"/>
+	<xsd:complexType name="Car">
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="id" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="name" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="model" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="year" type="xsd:string"/>
+			<xsd:element minOccurs="0" name="price" type="xsd:int"/>
+			<xsd:element minOccurs="0" name="spec" type="bons0:Specs"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
