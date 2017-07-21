@@ -4,22 +4,63 @@
 	<groupId>Gateway</groupId>
 	<artifactId>Gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven-compiler-plugin>3.6.1</maven-compiler-plugin>
+		<maven-war-plugin>3.0.0</maven-war-plugin>
+		<maven-resources-plugin>3.0.2</maven-resources-plugin>
+		<maven-dependency-plugin>3.0.0</maven-dependency-plugin>
+		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+		
+		<java.version>1.6</java.version>
+		<version.slf4j>1.7.25</version.slf4j>
+	</properties>
+	
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<finalName>${project.name}</finalName>
+		<outputDirectory>${project.basedir}\WebContent\WEB-INF\classes</outputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>${maven-compiler-plugin}</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-		
+
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin}</version>
+				<configuration>
+					<warSourceDirectory>${project.basedir}\WebContent\</warSourceDirectory>
+					<webXml>${project.basedir}\WebContent\WEB-INF\web.xml</webXml>
+
+					<archive>
+						<manifestEntries>
+							<Specification-Title>${project.name}</Specification-Title>
+							<Specification-Version>${project.version}</Specification-Version>
+							<Implementation-Version>${project.version}-${maven.build.timestamp}-${build.number}</Implementation-Version>
+							<SCM-Revision>${scm.revision}</SCM-Revision>
+							<Build-Number>${build.number}</Build-Number>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>io.swagger</groupId>
